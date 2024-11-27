@@ -1,0 +1,19 @@
+.gallery-grid {
+    width: 100%;
+    gap: .5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.gallery-item {
+    background-color: red;
+}
+
+.gallery-flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}

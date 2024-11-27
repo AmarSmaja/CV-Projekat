@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="https://www.freepngdesign.com/content/uploads/images/p-527-7-as-logo-png-transparent-logo-896943886211.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smaic Amar - Blog 1</title>
+</head>
+<body>
+    <section class="blog1">
+        <div class="scroll-linija"></div>
+        <header>
+            <div class="grid-item">
+                <h1 class="logo-naslov">Smaic Amar.</h1>
+            </div>
+
+            <div class="grid-item">
+                <ul>
+                    <li><a href="index.html">Pocetna</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="omeni.html">O meni</a></li>
+                </ul>
+            </div>
+
+            <div class="grid-item">
+                <input type="text" placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </header>
+
+        <div class="blog-text">
+            <div class="sadrzaj">
+                <p>Sadrzaj:</p>
+                <ul>
+                    <li><a href="#howdoes">How does Discord store trillions of messages?</a></li>
+                    <li><a href="#nosqlvssql">NoSQL Databases or SQL Databases?</a></li>
+                    <li><a href="#whentouse">When to use NoSQL vs SQL</a></li>
+                    <li><a href="#typesof">Types of NoSQL databases</a></li>
+                    <li><a href="#nosqlperf">NoSQL Performance</a></li>
+                    <li><a href="#sqlperf">SQL Performance</a></li>
+                    <li><a href="#normalized">Normalized vs Denormalized Data</a></li>
+                </ul>
+            </div>
+
+            <h1>How does Discord store trillions of messages?</h1>
+
+            <p><a href="https://discord.com/" target="_blank">Discord</a> handles its massive volume of messages with an advanced database setup using <a href="https://www.scylladb.com/" target="_blank">ScyllaDB</a> and <a href="https://cassandra.apache.org/_/index.html" target="_blank">Apache Cassandra</a>, two NoSQL distributed databases known for their high availability, scalability, and partition-tolerant properties. Storing trillions of messages requires strategies tailored for high throughput and low-latency reads and writes across distributed systems. Here’s how Discord accomplishes this:</p>
+                <ul>
+                    <li id="howdoes"><strong><i>Using a Distributed Database Architecture</i></strong></li>
+                        <ul>
+                            <li><strong>Data Partitioning</strong>: Both ScyllaDB and Cassandra are designed to distribute data across multiple <a href="https://university.scylladb.com/courses/scylla-essentials-overview/lessons/architecture/topic/node/" target="_blank">nodes</a>, making it possible to scale horizontally. Messages are partitioned based on specific <a href="https://university.scylladb.com/courses/data-modeling/lessons/basic-data-modeling-2/topic/primary-key-partition-key-clustering-key/" target="_blank">keys</a>, like user IDs, channel IDs, or timestamps, ensuring data is spread evenly across nodes.</li>
+                            <img src="https://miro.medium.com/v2/resize:fit:862/1*sKQQZ6XuH_gCqwlXWuDyig.png" alt="Data Partitioning" class="manja-slika">
+                            <li><strong>Replication</strong>: Data is automatically replicated across nodes to ensure durability and fault tolerance. If a node goes down, replicas on other nodes can serve requests, minimizing downtime.</li>
+                        </ul>   
+                    <li><strong><i>Choosing ScyllaDB and Cassandra for High-Volume Data</i></strong></li>
+                        <ul>
+                            <li><strong>ScyllaDB's Speed</strong>: ScyllaDB, an alternative to Cassandra, is written in C++ and optimizes for higher performance and lower latency compared to Cassandra, which is written in Java. Discord leverages ScyllaDB’s capabilities for faster message storage and retrieval.</li>
+                            <img src="https://www.scylladb.com/wp-content/uploads/aerospike-graphic.svg" alt="" class="manja-slika">
+                            <li><strong>Columnar Storage Model</strong>: Both ScyllaDB and Cassandra store data in rows and columns rather than in traditional relational tables. This column-family structure is well-suited for high write-throughput applications like messaging.</li>
+                        </ul>
+                    <li><strong><i>Handling Message Retrieval and Storage</i></strong></li>
+                        <ul>
+                            <li><strong>Time-Series Data Model</strong>: Messages are often stored in a way that supports <a href="https://www.scylladb.com/glossary/cassandra-time-series-data-modeling/" target="_blank">time-based partitioning</a>. This allows Discord to store messages chronologically, simplifying retrieval for recent messages, which are accessed most frequently.</li>
+                            <li><strong>Efficient Indexing and Querying</strong>: ScyllaDB and Cassandra enable Discord to use composite keys (such as user_id + timestamp) to make querying more efficient, minimizing the overhead of random reads across large datasets.</li>
+                        </ul>
+                    <li><strong><i>Data Compaction and Storage Optimization</i></strong></li>
+                        <ul>
+                            <li><strong>Compaction</strong>: Both databases employ compaction strategies that consolidate multiple write operations into more efficient storage layouts over time. This keeps data access fast even as the database grows.</li>
+                            <li><strong>TTL (Time-To-Live)</strong>: For some types of temporary data, Discord might set <a href="https://opensource.docs.scylladb.com/stable/cql/time-to-live.html" target="_blank">TTLs</a>, automatically expiring and removing data that’s no longer needed. This helps prevent the storage layer from being overwhelmed.</li>
+                        </ul>
+                    <li><strong><i>Scaling Throughput with Horizontal Scaling</i></strong></li>
+                        <ul>
+                            <li><strong>Node Scaling</strong>: To handle the load, Discord can add more nodes to its clusters as needed. Both Cassandra and ScyllaDB are designed for linear scaling, meaning the system’s performance grows predictably with additional hardware.</li>
+                            <img src="https://www.scylladb.com/wp-content/uploads/shard-per-core-design-2.png" alt="" class="manja-slika">
+                            <li><strong>Sharding</strong>: By sharding data across multiple servers, Discord can process reads and writes in parallel, distributing the workload evenly.</li>
+                        </ul>
+                    <li><strong><i>Caching Frequently Accessed Data</i></strong></li>
+                        <ul>
+                            <li>Discord likely uses a <a href="https://www.scylladb.com/2018/07/26/how-scylla-data-cache-works/" target="_blank">caching layer</a> (e.g., Redis or Memcached) to store frequently accessed messages in memory. This minimizes the need for repetitive database queries, reducing latency for commonly accessed data like recent messages.</li>
+                            
+                        </ul>
+                    <li><strong><i>Eventual Consistency and Availability Trade-offs</i></strong></li>
+                        <ul>
+                            <li>ScyllaDB and Cassandra offer <a href="https://www.scylladb.com/glossary/eventual-consistency/" target="_blank">eventual consistency</a>, which works well in a messaging context. Discord can prioritize availability and partition tolerance, allowing messages to be available quickly across the network, even if there’s a short delay in replication.</li>
+                            <img src="https://www.scylladb.com/wp-content/uploads//eventual-consistency-diagram-1.png" alt="" class="manja-slika">
+                        </ul>
+                </ul>
+
+            <p>Through these strategies, Discord efficiently manages an enormous and constantly growing volume of data while maintaining low latency, high availability, and the flexibility to scale up as needed. This approach allows them to meet the demands of millions of concurrent users and trillions of stored messages without overwhelming their infrastructure.</p>
+
+            <h2 id="nosqlvssql">NoSQL Databases or SQL Databases?</h2>
+
+            <p>SQL and NoSQL represent two of the most common types of databases. SQL stands for Structured Query Language and is used in most modern relational database management systems (RDBMS). <a href="https://www.scylladb.com/learn/nosql/" target="_blank">NoSQL</a> means either “no SQL” (it does not use any SQL for querying) or “not only SQL” (it uses both SQL and non-SQL querying methods). NoSQL is generally used in a non-relational database (in that it doesn’t support foreign keys and joins across tables). The differences between <a href="https://hackr.io/blog/nosql-vs-sql" target="_blank">NoSQL vs SQL</a> databases include how they are built, the structure and types of data they hold, and how the data is stored and queried.</p>
+
+            <p>Relational (SQL) databases use a rigid structure of tables with columns and rows. There is one entry per row and each column contains a specific piece of information. The highly organized data requires normalization, which reduces data redundancy and improves reliability. SQL is a highly-controlled standard, supported by the American National Standards Institute (ANSI) and the International Standards Organization (ISO).</p>
+
+            <p>Non-relational databases are often implemented as <a href="https://www.scylladb.com/learn/nosql/" target="_blank">NoSQL</a> systems. There is not one type of NoSQL database. There are many different schemas, from key-value stores, to document stores, graph databases, time series databases and wide-column stores. Some NoSQL systems also support “multi-model” schemas, meaning they can support more than one data schema internally.</p>
+
+            <p>Unlike the ANSI/ISO processes for the SQL standard, there is no industry standard around implementing NoSQL systems. The exact manner of supporting various NoSQL schemas is up to the various individual software developers. Implementations of NoSQL databases can be widely divergent and incompatible. For instance, even if two systems are both key-value databases, their APIs, data models, and storage methods may be highly divergent and mutually incompatible.</p>
+
+            <img src="https://www.scylladb.com/wp-content/uploads/differences-between-sql-databases-and-nosql-databases.png" alt="">
+
+            <h2 id="whentouse">When to use NoSQL vs SQL</h2>
+
+            <p>NoSQL vs SQL performance comparison is based on attributes like consistency, availability and speed. The needs of an enterprise generally determine which type of database system to use.</p>
+
+            <p>A relational (SQL) database is ideal for handling data models that are well-understood, may not change often, require adherence to strict international standards, and for businesses that value data consistency over transaction speed.</p>
+
+            <p>A non-relational (NoSQL) database is ideal for companies facing changing data requirements, those that can adapt to rapidly-evolving vendor-driven standards and APIs, and those who need to deal with multiple types of data and high traffic volumes.</p>
+
+            <p>But there are always exceptions. Time series data models are well understood and so are key values, which are not traditional SQL models. Many NoSQL databases are consistent, though not ACID.</p>
+
+            <h2 id="typesof">Types of NoSQL databases</h2>
+
+            <p>Common types of NoSQL databases include:</p>
+
+            <ul>
+                <li><strong>Key-value store</strong> — Stores data with simple indexed keys and values. Examples include Oracle NoSQL database, Redis, Aerospike, Oracle Berkeley DB, Voldemort, Amazon DynamoDB and Infinity DB. </li>
+                <li><strong>Wide column store</strong> — Uses tables, rows and columns. But the format and naming of the columns can vary in different rows within the same table. Examples include Apache Cassandra, ScyllaDB, Datastax Enterprise, Apache HBase, Apache Kudu, Apache Parquet and MonetDB.</li>
+                <li><strong>Document database</strong> — A more complex and structured version of the key-value model, which gives each document its own retrieval key. Examples include Orient DB, MarkLogic, MongoDB, IBM Cloudant, Couchbase, and Apache CouchDB.</li>
+                <li><strong>Graph database</strong> — Presents interconnected data as a logical graph. Examples include Neo4j, JanusGraph, FlockDB and GraphDB.</li>
+            </ul>
+
+            <h2 id="nosqlperf">NoSQL Performance</h2>
+
+            <p>NoSQL databases have garnered attention for their impressive performance capabilities, offering scalability and agility in handling vast amounts of data. Unlike traditional relational databases, NoSQL databases excel in distributed computing environments, efficiently managing large datasets across clusters of nodes. Their schema-less architecture allows for flexible data modeling, eliminating the need for predefined schemas and enabling rapid development cycles.</p>
+
+            <p>With support for horizontal scaling, NoSQL databases can effortlessly accommodate growing workloads by adding more nodes to the <a href="https://rafaeldalsenter.medium.com/clustering-in-nosql-cassandra-x-mongodb-bf4f6eced48a" target="_blank">cluster</a>, ensuring consistent performance even under heavy loads. Additionally, many NoSQL databases offer features such as <a href="https://www.mongodb.com/resources/products/capabilities/database-sharding-explained" target="_blank">sharding</a> and <a href="https://hevodata.com/learn/data-replication-in-nosql-databases/" target="_blank">replication</a>, further enhancing performance and fault tolerance. In essence, NoSQL databases redefine performance benchmarks by providing robust solutions for modern data-intensive applications.</p>
+
+            <h2 id="sqlperf">SQL Performance</h2>
+
+            <p>SQL databases, with their structured and relational nature, have long been known for their strong performance characteristics. Through carefully designed indexing, query optimization, and transaction management, SQL databases efficiently handle complex queries across vast datasets. Their adherence to <a href="https://www.databricks.com/glossary/acid-transactions#:~:text=ACID%20is%20an%20acronym%20that,operations%20are%20called%20transactional%20systems." target="_blank">ACID</a> (Atomicity, Consistency, Isolation, Durability) properties ensures data integrity and reliability, crucial for mission-critical applications. While scaling SQL databases vertically can be a challenge due to hardware limitations, advancements in technology and the adoption of techniques like partitioning have enabled horizontal scaling, allowing SQL databases to handle increasing workloads with ease.</p>
+
+            <p>Furthermore, the mature ecosystem surrounding SQL databases provides robust tools for monitoring and tuning performance, empowering developers and database administrators to optimize system efficiency continually. Overall, SQL databases remain a cornerstone of data management, renowned for their consistent and reliable performance in a wide range of applications.</p>
+        
+            <h2 id="normalized">Normalized vs Denormalized Data</h2>
+
+            <p>The difference between normalized and denormalized data is the method used for storing and retrieving it. Denormalized data is combined in one table. This speeds up data retrieval because a query doesn’t have to search multiple tables to find information as it would in the normalized process. Everything is in one place, but data may be duplicated. The added speed comes at the expense of more data redundancy and less data integrity. <br><br>This is what a denormalized database looks like:</p>
+
+            <table>
+                <tr>
+                    <th>Project Code</th>
+                    <th>Project Name</th>
+                    <th>Project Manager</th>
+                    <th>Project Budget</th>
+                    <th>Employee No.</th>
+                    <th>Employee Name</th>
+                    <th>Department No.</th>
+                    <th>Department Name</th>
+                    <th>Hourly Rate</th>
+                </tr>
+
+                <tr>
+                    <td>PC010</td>
+                    <td>Reservation System</td>
+                    <td>Mr. Ajay</td>
+                    <td>120500</td>
+                    <td>$100</td>
+                    <td>Mohan</td>
+                    <td>D03</td>
+                    <td>Database</td>
+                    <td>21.00</td>
+                </tr>
+
+                <tr>
+                    <td>PC010</td>
+                    <td>Reservation System</td>
+                    <td>Mr. Ajay</td>
+                    <td>120500</td>
+                    <td>$101</td>
+                    <td>Vipul</td>
+                    <td>DO2</td>
+                    <td>Testing</td>
+                    <td>16.50</td>
+                </tr>
+
+                <tr>
+                    <td>PC010</td>
+                    <td>Reservation System</td>
+                    <td>Mr. Ajay</td>
+                    <td>120500</td>
+                    <td>$102</td>
+                    <td>Riyaz</td>
+                    <td>DO1</td>
+                    <td>IT</td>
+                    <td>22.00</td>
+                </tr>
+
+                <tr>
+                    <td>PC011</td>
+                    <td>HR System</td>
+                    <td>Mrs. Charu</td>
+                    <td>500500</td>
+                    <td>$103</td>
+                    <td>Pavan</td>
+                    <td>DO3</td>
+                    <td>Database</td>
+                    <td>18.50</td>
+                </tr>
+
+                <tr>
+                    <td>PC011</td>
+                    <td>HR System</td>
+                    <td>Mrs. Charu</td>
+                    <td>500500</td>
+                    <td>$104</td>
+                    <td>Jitendra</td>
+                    <td>DO2</td>
+                    <td>Testing</td>
+                    <td>17.00</td>
+                </tr>
+
+                <tr>
+                    <td>PC012</td>
+                    <td>Attendance System</td>
+                    <td>Mr. Rajesh</td>
+                    <td>710700</td>
+                    <td>$109</td>
+                    <td>Vikas</td>
+                    <td>DO1</td>
+                    <td>IT</td>
+                    <td>20.50</td>
+                </tr>
+            </table>
+
+            <p>Normalized data is stored in multiple tables. One type of data is organized in one table. Related data is stored in another table. Then table JOINs are used to connect relationships between the tables. The benefits of normalized data include reduced redundancy, better consistency and greater data integrity. But the practice can produce slow results, especially when there are complex queries with a lot of data to process. </p>
+
+            <p>In a normalized database, there are no repeating fields or columns. The repeating fields are put into new database tables along with the key from the unnormalized database table.<br><br>This is what a normalized database table looks like:</p>
+
+            <img src="https://www.scylladb.com/wp-content/uploads/normalized-database-table-768x857.png" alt="">
+        </div>
+    </section>
+</body>
+</html>

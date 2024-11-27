@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="https://www.freepngdesign.com/content/uploads/images/p-527-7-as-logo-png-transparent-logo-896943886211.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smaic Amar - Blog 1</title>
+</head>
+<body>
+    <section class="blog1">
+        <div class="scroll-linija"></div>
+        <header>
+            <div class="grid-item">
+                <h1 class="logo-naslov">Smaic Amar.</h1>
+            </div>
+
+            <div class="grid-item">
+                <ul>
+                    <li><a href="index.html">Pocetna</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="omeni.html">O meni</a></li>
+                </ul>
+            </div>
+
+            <div class="grid-item">
+                <input type="text" placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </header>
+
+        <div class="blog-text">
+            <div class="sadrzaj">
+                <p>Sadrzaj:</p>
+                <ul>
+                    <li><a href="#optimizovati">Optimizovati ili ne?</a></li>
+                    <li><a href="#optimizacija">Optimizacija JavaScript preuzimanja</a></li>
+                    <li><a href="#ucitavanje">Učitavanje kritičnih assets-a što je prije moguće</a></li>
+                    <li><a href="#rastavljanje">Rastavljanje dugih zadataka</a></li>
+                    <li><a href="#optimiziranje">Optimiziranje performansi event-ova</a></li>
+                    <li><a href="#savjeti">Savjeti za pisanje efikasnijeg koda</a></li>
+                </ul>
+            </div>
+
+            <h1>Optimizacija JavaScript koda: Poboljsanje brzine i efikasnosti koda</h1>
+
+            <p>Vrlo je važno uzeti u obzir kako koristimo JavaScript na svojim web stranicama i razmisliti o tome kako ublažiti probleme s performansama koje on može uzrokovati. Dok slike i video zauzimaju preko 70% bajtova preuzetih za prosječnu web stranicu, bajt po bajtu, JavaScript ima veći potencijal za negativan utjecaj na performanse — može značajno utjecati na vrijeme preuzimanja, performanse renderiranja i korištenje CPU-a i baterije. Ovaj članak predstavlja savjete i tehnike za optimizaciju JavaScripta za poboljšanje performansi vaše web stranice.</p>
+        
+            <h2 id="optimizovati">Optimizovati ili ne?</h2>
+
+            <p>Prvo pitanje na koje bismo trebali odgovoriti prije nego počnemo optimizirati svoj kod je "šta trebam optimizirati?". Neki od savjeta i tehnika o kojima se govori u nastavku su dobre prakse koje će koristiti gotovo svakom web projektu, dok su neke potrebne samo u određenim situacijama. Pokušaj primjene svih ovih tehnika posvuda je vjerovatno nepotreban i može biti gubljenje vašeg vremena. Trebali biste shvatiti koje su optimizacije performansi zapravo potrebne u svakom projektu.</p>
+
+            <p>Da bismo to učinili, moramo <a href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance" target="_blank">izmjeriti performanse naše stranice</a>. Kao što pokazuje prethodna veza, postoji nekoliko različitih načina mjerenja performansi, od kojih neki uključuju <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API" target="_blank">sofisticirane API-ja</a> za performanse. Međutim, najbolji način da započnemo jeste da naučimo kako da koristimo alate kao što su <a href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance#network_monitor_tools" target="_blank">ugrađena mreža pretraživača</a> i <a href="https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance#performance_monitor_tools" target="_blank">alati za performanse</a>, da vidimo koji djelovi učitavanja stranice traju dugo i treba ih optimizovati.</p>
+        
+            <h2 id="optimizacija">Optimizacija JavaScript preuzimanja</h2>
+
+            <p>Najučinkovitiji JavaScript koji najmanje blokira JavaScript koji možete koristiti je JavaScript koji uopće ne koristite. Trebali biste koristiti što je manje moguće JavaScript. Nekoliko savjeta koje treba imati na umu:</p>
+
+            <ul>
+                <li><strong>Ne treba vam uvijek framework</strong>: možda ste upoznati s korištenjem <a href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks" target="_blank">JavaScript framework-a</a>. Ako imate iskustvo i samopouzdanje u korištenju ovog okvira, i kao i sve alate koje pruža, onda bi to mogao biti vaš alat za izradu većine projekata. Međutim, okviri su teški za JavaScript. Ako stvarate prilično statičko iskustvo sa nekoliko JavaScript zahtjeva, vjerovatno vam taj okvir nije potreban. Možda ćete moći implementirati ono što vam je potrebno koristeći nekoliko redova standardnog JavaScripta.</li>
+                <li><strong>Razmislite o jednostavnijem rješenju</strong>: možda imate blistavo, zanimljivo rješenje za implementaciju, ali razmislite da li će ga vaši korisnici cijeniti. Da li bi više voleli nešto jednostavnije?</li>
+                <li><strong>Uklonite neiskorišteni kod</strong>: Ovo može zvučati očigledno, ali je iznenađujuće koliko programera zaboravlja očistiti neiskorištenu funkcionalnost koja je dodana tokom procesa razvoja. Morate biti pažljivi i promišljeni o tome šta se dodaje i uklanja. Sva skripta se analizira, bez obzira da li se koristi ili ne; stoga bi brza pobjeda za ubrzanje preuzimanja bila da se riješite bilo koje funkcionalnosti koja se ne koristi. Uzmite u obzir i to da ćete često koristiti samo malu količinu funkcionalnosti dostupne u okviru. Da li je moguće kreirati prilagođenu konstrukciju okvira koja sadrži samo dio koji vam je potreban?</li>
+                <li><strong>Consider built-in browser features</strong>: It might be that you can use a feature the browser already has, rather than creating your own via JavaScript. For example:
+                    <ol>
+                        <li>Koristite <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#using_built-in_form_validation" target="_blank">ugrađenu provjeru valjanosti obrasca</a> na strani klijenta.</li>
+                        <li>Koristite vlastiti <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" target="_blank">video</a> player pretraživača.</li>
+                        <li>Koristite <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations" target="_blank">CSS animacije</a> umjesto JavaScript biblioteke animacija.</li>
+                    </ol>
+                </li>
+            </ul>
+
+            <h2 id="ucitavanje">Učitavanje kritičnih assets-a što je prije moguće</h2>
+
+            <p>Ako je skripta zaista važna i zabrinuti ste da utiče na performanse jer se ne učitava dovoljno brzo, možete je učitati unutar <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head" target="_blank">head</a> dokumenta:</p>
+            <img src="img/blog-1/image.png" alt="Ucitavanje JavaScripta">
+
+            <p>Ovo radi OK, ali blokira renderiranje. Bolja strategija je korištenje <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload" target="_blank">rel="preload"</a> za kreiranje preloadera za kritični JavaScript:</p>
+            <img src="img/blog-1/preload.png" alt="Preload JavaScripta">
+
+            <p>Predučitavanje <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link" target="_blank">link</a> dohvaća JavaScript što je prije moguće, bez blokiranja renderiranja. Zatim ga možete koristiti gdje god želite na svojoj stranici:</p>
+            <img src="img/blog-1/preload-2.png" alt="Preload JavaScripta">
+
+            <h2 id="rastavljanje">Rastavljanje dugih zadataka</h2>
+
+            <p>Kada pretraživač pokrene vaš JavaScript, on će organizovati skriptu u zadatke koji se pokreću uzastopno, kao što je pravljenje zahteva za dohvaćanje, pokretanje interakcija korisnika i unosa kroz rukovaoce događajima, pokretanje animacije vođene JavaScript-om i tako dalje.</p>
+
+            <p>Većina ovoga se dešava na glavnoj niti, sa izuzecima uključujući JavaScript koji radi u <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">Web Workers-u</a>. Glavna nit može pokrenuti samo jedan zadatak u isto vrijeme.</p>
+
+            <p>Kada jednom zadatku treba duže od 50 ms da se pokrene, klasifikuje se kao dug zadatak. Ako korisnik pokuša da stupi u interakciju sa stranicom ili je zatraženo važno ažuriranje korisničkog sučelja dok traje dug zadatak, to će uticati na njegovo iskustvo. Očekivani odgovor ili vizuelno ažuriranje će biti odgođeno, što će rezultirati da korisničko sučelje izgleda sporo ili nereagira.</p>
+
+            <p>Da biste ublažili ovaj problem, morate raščlaniti duge zadatke na manje zadatke. Ovo pretraživaču daje više šansi da izvrši vitalno rukovanje korisničkom interakcijom ili ažuriranja UI renderiranja – pretraživač ih potencijalno može obaviti između svakog manjeg zadatka, a ne samo prije ili nakon dugog zadatka. U svom JavaScript-u, to možete učiniti tako što ćete svoj kod razbiti u zasebne funkcije. Ovo takođe ima smisla iz nekoliko drugih razloga, kao što je lakše održavanje, otklanjanje grešaka i pisanje testova.</p>
+
+            <p>Da bismo ovo riješili, povremeno izvodimo funkciju "yield" kako bismo naveli kod da se preda glavnoj niti. To znači da je naš kod podijeljen na više zadataka, između čijeg izvršavanja pregledniku se daje mogućnost da se bavi zadacima visokog prioriteta kao što je ažuriranje korisničkog sučelja. Uobičajeni obrazac za ovu funkciju koristi <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout" target="_blank">setTimeout()</a> za odlaganje izvršenja u poseban zadatak:</p>
+            <img src="img/blog-1/jstimeout.png" alt="JavaScript Timeout">
+
+            <h2 id="optimiziranje">Optimiziranje performansi event-ova</h2>
+
+            <p>Event-ovi mogu biti skupi za preglednik za praćenje i obradu, posebno kada kontinuirano pokrećete događaj. Na primjer, možda pratite položaj miša koristeći događaj <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event" target="_blank">mousemove</a> da provjerite je li još uvijek unutar određenog područja stranice:</p>
+            <img src="img/blog-1/jsevent.png" alt="JavaScript Event">
+
+            <p>Možda pokrećete igru u canvas-u na svojoj stranici. Dok je miš unutar platna, htjet ćete stalno provjeravati kretanje miša i poziciju kursora i ažurirati stanje igre — uključujući rezultat, vrijeme, poziciju svih sprite-ova, informacije o detekciji sudara, itd. na kraju, više nećete morati da radite sve to, i u stvari, bilo bi gubljenje procesorske snage da stalno slušate taj događaj.</p>
+
+            <h2 id="savjeti">Savjeti za pisanje efikasnijeg koda</h2>
+
+            <p>Postoji nekoliko opštih najboljih praksi koje će učiniti da vaš kod radi efikasnije:</p>
+            <ul>
+                <li>Smanjite manipulaciju DOM-om: Pristup i ažuriranje DOM-a je računski skupo, tako da biste trebali minimizirati količinu koju vaš JavaScript radi, posebno kada izvodite konstantnu DOM animaciju.</li>
+                <li>Grupne DOM promjene: Za bitne DOM promjene, trebali biste ih grupirati u grupe koje se rade zajedno, umjesto da samo ispaljujete svaku pojedinačnu promjenu kako se dogodi. Ovo može smanjiti količinu posla koji pretraživač radi u stvarnim terminima, ali i poboljšati percipirane performanse. Može učiniti da korisničko sučelje izgleda glatkije kako biste uklonili nekoliko ažuriranja u jednom potezu, umjesto da stalno pravite mala ažuriranja. Ovdje je koristan savjet — kada imate veliki komad HTML-a za dodavanje na stranicu, prvo napravite cijeli fragment (obično unutar <a href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment" target="_blank">DocumentFragmenta</a>), a zatim ga sve dodajte u DOM odjednom, umjesto da dodajete svaku stavku zasebno.</li>
+                <li>Pojednostavite svoj HTML: Što je jednostavnije vaše DOM stablo, brže mu se može pristupiti i njime se može manipulisati pomoću JavaScript-a. Pažljivo razmislite šta je potrebno vašem korisničkom sučelju i uklonite nepotrebne nedostatke.</li>
+                <li>Smanjite količinu koda u petlji: petlje su skupe, pa smanjite količinu upotrebe petlje u vašem kodu gdje god je to moguće. U slučajevima kada su petlje neizbježne:
+                    <ul>
+                        <li>Izbjegavajte pokretanje cijele petlje kada je to nepotrebno, koristeći naredbe <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break" target="_blank">break</a> ili <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/continue" target="_blank">continue</a> prema potrebi. Na primjer, ako tražite nizove za određeno ime, trebali biste se izvući iz petlje kada se pronađe ime; nema potrebe za pokretanjem daljnjih iteracija petlje:</li>
+                        <img src="img/blog-1/jsiteracije.png" alt="JavaScript Iteracije">
+                        <li>Radite posao koji je potreban samo jednom izvan petlje. Ovo može zvučati pomalo očigledno, ali to je lako previdjeti. Uzmite sljedeći isječak, koji dohvaća JSON objekat koji sadrži podatke koje treba obraditi na neki način. U ovom slučaju operacija <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch" target="_blank">dohvaćanja()</a> se radi na svakoj iteraciji petlje, što je gubitak računarske snage. Dohvaćanje, koje ne zavisi od i, može se pomeriti izvan petlje, tako da se radi samo jednom:</li>
+                        <img src="img/blog-1/jsfetch.png" alt="JavaScript Fetch">
+                    </ul>
+                </li>
+                <li>Pokrenite računanje izvan glavne niti: Ranije smo govorili o tome kako JavaScript općenito pokreće zadatke na glavnoj niti i koliko dugo operacije mogu blokirati glavnu nit, što potencijalno dovodi do loših performansi korisničkog sučelja. Takođe smo pokazali kako duge zadatke podijeliti na manje zadatke, ublažavajući ovaj problem. Drugi način rješavanja ovakvih problema je potpuno premještanje zadataka s glavne niti. Postoji nekoliko načina da to postignete:
+                    <ul>
+                        <li><strong>Koristite asinhroni kod</strong>: <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing" target="_blank">Asinhroni JavaScript</a> je u osnovi JavaScript koji ne blokira glavnu nit. Asinhroni API-ji imaju tendenciju da rukuju operacijama kao što su dohvaćanje resursa iz mreže, pristup datoteci na lokalnom sistemu datoteka ili otvaranje toka na web kameri korisnika. Budući da bi te operacije mogle potrajati dugo, bilo bi loše samo blokirati glavnu nit dok čekamo da se završe. Umjesto toga, pretraživač izvršava te funkcije, održava glavnu nit izvršavajući sljedeći kod, a te funkcije će vratiti rezultate kada budu dostupne u nekom trenutku u budućnosti. Moderni asinhroni API-ji su zasnovani na <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promise-u</a>, što je funkcija JavaScript jezika dizajnirana za rukovanje asinhronim operacijama. Moguće je napisati vlastite <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Implementing_a_promise-based_API" target="_blank">funkcije zasnovane na promise-u</a> ako imate funkcionalnost koja bi imala koristi od asinhronog pokretanja.</li>
+                        <li><strong>Pokrenite računanje u web radnicima</strong>: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">Web radnici</a> su mehanizam koji vam omogućava da otvorite zasebnu nit za pokretanje dijela JavaScripta, tako da ne blokira glavnu nit. Radnici imaju neka velika ograničenja, najveće je to što ne možete raditi nikakve DOM skripte unutar radnika. Možete raditi većinu drugih stvari, a radnici mogu slati i primati poruke na i iz glavne niti. Glavni slučaj upotrebe za radnike je ako imate puno računanja za obaviti, a ne želite da blokira glavnu nit. Uradite to izračunavanje u workeru, pričekajte rezultat i pošaljite ga nazad u glavnu nit kada bude spreman.</li>
+                        <li><strong>Koristi WebGPU</strong>: <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API" target="_blank">WebGPU</a> je API pretraživača koji omogućava web programerima da koriste GPU (Graphic Processing Unit) osnovnog sistema za izvođenje proračuna visokih performansi i crtanje složenih slika koje se mogu prikazati u pretraživaču. Prilično je složen, ali može pružiti još bolje performanse od web radnika.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

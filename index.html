@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="https://www.freepngdesign.com/content/uploads/images/p-527-7-as-logo-png-transparent-logo-896943886211.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smaic Amar - Portfolio</title>
+    <script>
+        window.onload = function() {
+            document.getElementById('vertdiv').classList.toggle('vertikalni-meni')
+            document.getElementById('vertdiv').classList.toggle('vertikalni-meni-display')
+        }
+
+        function showDiv() {
+            document.getElementById('vertdiv').classList.toggle('vertikalni-meni')
+            document.getElementById('vertdiv').classList.toggle('vertikalni-meni-display')
+        }
+
+        function closeDiv() {
+            document.getElementById('vertdiv').classList.toggle('vertikalni-meni')
+            document.getElementById('vertdiv').classList.toggle('vertikalni-meni-display')
+        }
+    </script>
+</head>
+<body>
+    <section class="main" id="main">
+        <header>
+            <div class="grid-item">
+                <a href="index.html"><h1 class="logo-naslov">Smaic Amar.</h1></a>
+            </div>
+
+            <div class="grid-item">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="gprojekat.html">Project</a></li>
+                </ul>
+            </div>
+
+            <div class="grid-item">
+                <input type="text" placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </header>
+
+        <div class="main-info">
+            <h1>Smaic Amar</h1>
+            <p>Web developer.</p>
+            <button><a href="#omeni" style="padding: 50px;">About Me</a></button>
+            <button class="popup" id="popup" onclick="showDiv()">></button>
+        </div>
+
+        <div class="vertikalni-meni" id="vertdiv">
+            <ul>
+                <li><a href="#omeni">O Meni</a></li>
+                <li><a href="#projekti">Projekti</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+
+                <button class="btn-close" id="btnclose" onclick="closeDiv()"><</button>
+            </ul>
+        </div>
+    </section>
+    <section class="about" id="omeni">
+        <div class="about-wrapper">
+
+            <div class="about-tekst">
+                <p>My name is Amar Smaic, and I am currently pursuing my studies at the Faculty of Natural Sciences and Mathematics in Sarajevo, specializing in IT with a focus on web design. I have a solid foundation in web design, having completed my education at the Graphic School in Ilidža, also in the field of web design.
+                    I am passionate about web development and constantly seeking to deepen my knowledge and skills in this area. My primary interests include building dynamic and responsive websites, integrating databases, ensuring web security and developing APIs.</p>
+            </div>
+
+            <div class="about-tekst">
+                <ul>
+                    <li><i class="fa-brands fa-html5 fa-xl"></i></li>
+                    <li><i class="fa-brands fa-css3-alt fa-xl"></i></li>
+                    <li><i class="fa-brands fa-js fa-xl"></i></li>
+                    <li><a href="https://github.com/AmarSmaja" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                    <li><i class="fa-brands fa-react fa-xl"></i></li>
+                    <li><i class="fa-solid fa-database fa-xl"></i></li>
+                    <li><i class="fa-brands fa-node fa-xl"></i></li>
+                    <li><i class="fa-brands fa-git"></i></i></li>
+                    <li><i class="fa-brands fa-python fa-xl"></i></li>
+                </ul>
+            </div>
+
+            <div class="about-tekst">
+                <button><a href="CV.pdf" style="padding: 20px;" target="_blank">Download CV</a></button>
+            </div>
+
+            <div class="about-slika">
+
+            </div>
+        </div>
+    </section>
+
+    <section class="projekti" id="projekti">
+        <div class="projekti-wrapper">
+            <div class="projekat">
+                <a href="https://elegant-rugelach-b2f5c0.netlify.app/" target="_blank"><img src="img/restoran.png" alt="Restoran Websajt"></a>
+            </div>
+
+            <div class="projekat">
+                <a href="https://jolly-empanada-a801ed.netlify.app/" target="_blank"><img src="img/portfolio.png" alt="Portfolio Websajt"></a>
+            </div>
+            
+            <div class="projekat">
+                <a href="https://heroic-muffin-2ec7b7.netlify.app/" target="_blank"><img src="img/pet.png" alt="PetShop Websajt"></a>
+            </div>
+            
+            <div class="projekat">
+                <a href="https://dreamy-khorana-614007.netlify.app/" target="_blank"><img src="img/hulu.png" alt="Hulu Klon Websajt"></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog" id="blog">
+        <div class="blog-wrapper">
+            <div class="blog-naslov">
+                <h1>Blog</h1>
+            </div>
+
+            <div class="blog-item">
+                <div class="blog-img">
+                    <a href="blog1.html"><img src="img/js-optimizacija.png" alt=""></a>
+                </div>
+                <div class="blog-tekst">
+                    <h1>Optimizing JavaScript</h1>
+                </div>
+            </div>
+            <div class="blog-item">
+                <div class="blog-img">
+                    <a href="blog2.html"><img src="img/cassandra.jpg" alt=""></a>
+                </div>
+                <div class="blog-tekst">
+                    <h1>How does Discord store trillions of messages?</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="kontakt">
+        <div class="forma">
+            <div class="forma-ime flexx">
+                <input type="text" placeholder="First Name" class="input">
+            </div>
+
+            <div class="forma-ime flexx">
+                <input type="text" placeholder="Last Name" class="input">
+            </div>
+
+            <div class="forma-mail flexx">
+                <input type="email" placeholder="Email" class="input">
+            </div>
+            <div class="forma-mail flexx">
+                <input type="tel" placeholder="Phone Number" class="input">
+            </div>
+
+            <div class="forma-poruka flexx">
+                <input type="text" placeholder="Your Message" class="input">
+            </div>
+
+            <div class="forma-submit flexx">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-povratak">
+                <a href="#top"><p>Back to the top</p></a>
+            </div>
+            
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-github fa-xl"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter fa-xl"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-copy">
+                <h1>&copy; 2024 Smaic Amar</h1>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
