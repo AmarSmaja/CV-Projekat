@@ -1,4 +1,8 @@
 @media only screen and (max-width: 800px) {
+    body {
+        overflow-x: hidden;
+    }
+    
     section {
         max-width: 100%;
     }
@@ -152,6 +156,34 @@
         column-count: 1;
     }
     
+    /* GPPROJEKAT.HTML */
+    .buttons-flex {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 50px;
+    }
+
+    section.opis img {
+        width: 100%;
+    }
+
+    section.maturski button {
+        width: 100%;
+    }
+
+    section.maturski img {
+        width: 100%;
+    }
+
+    section.maturski p {
+        margin: 50px 0px;
+    }
+
+    /* BLOG.HTML */
+    .blog-text ul {
+        padding: 0px 20px;
+        text-align: justify;
+    }
 }
 
 @media only screen and (min-width: 800px) {
@@ -165,5 +197,10 @@
 
     .gallery-column {
         column-count: 3;
+    }
+
+    .blog-text ul {
+        padding: 0px 100px;
+        text-align: justify;
     }
 }

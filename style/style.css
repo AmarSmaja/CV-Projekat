@@ -533,10 +533,10 @@ footer {
     font-weight: 700;
 }
 
-.blog-text ul {
+/* .blog-text ul {
     padding: 0px 100px;
     text-align: justify;
-}
+} */
 
 .blog-text ul li {
     padding: 10px 0px;
@@ -608,6 +608,7 @@ table, th, td {
     margin: 20px auto;
 }
 
+
 .maturski {
     height: 140vh;
     text-align: center;
@@ -623,6 +624,17 @@ table, th, td {
     color: var(--white);
     text-align: justify;
     margin: 50px 10%;
+}
+
+.gprojekat-responsive {
+    margin: 0px auto;
+    margin-bottom: 40px;
+    width: 60%;
+}
+
+.glavna-slikaprojekat {
+    width: 60%;
+    margin: 20px auto;
 }
 
 .maturski button {
