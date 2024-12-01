@@ -19,10 +19,6 @@
     flex-wrap: wrap;
 }
 
-/* .gallery-column {
-    column-count: 3;
-} */
-
 .gallery-item img {
     margin-bottom: 2rem;
 }

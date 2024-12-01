@@ -1,4 +1,4 @@
-@media only screen and (max-width: 800px) {
+@media (min-width: 401px) and (max-width: 800px) {
     body {
         overflow-x: hidden;
     }
@@ -29,6 +29,7 @@
         background-color: transparent;
         border: 1px solid var(--accent);
         border-radius: 10px;
+        color: white;
     }
 
     .phone-menu {
@@ -92,6 +93,11 @@
         width: 100%;
     }
 
+    section.contact .forma input {
+        width: 90%;
+        height: 80px;
+    }
+
     .projekat {
         grid-column: 1 / 3;
     }
@@ -109,9 +115,21 @@
     }
 
     /* OMENI.HTML */
-    .omeni-grid-item {
+    section.about .omeni-grid-item {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
+    }
+
+    section.about .about-tekst:nth-child(1) {
+        grid-row: 1 / 2 ;
+    }
+
+    section.about .about-tekst:nth-child(2) {
+        grid-row: 2 / 3;
+    }
+
+    section.about .about-tekst:nth-child(3) {
+        grid-row: 3 / 4;
     }
 
     .grid-ikona {
@@ -156,6 +174,10 @@
     .gallery-column {
         column-count: 1;
     }
+
+    section.gallery-flex video {
+        width: 50%;
+    }
     
     /* GPPROJEKAT.HTML */
     .buttons-flex {
@@ -164,12 +186,20 @@
         margin-top: 50px;
     }
 
+    .buttons-flex button {
+        color: red;
+    }
+
     section.opis img {
         width: 100%;
     }
 
+    section.maturski {
+        height: 60vh;
+    }
+
     section.maturski button {
-        width: 100%;
+        width: 80%;
     }
 
     section.maturski img {
@@ -187,7 +217,8 @@
     }
 }
 
-@media only screen and (min-width: 800px) {
+@media (min-width: 801px) and (max-width: 1200px) {
+    /* INDEX.HTML */
     .phone-menu {
         display: none;
     }
@@ -196,12 +227,325 @@
         display: none;
     }
 
+    .grid-item:nth-child(1) h1 {
+        font-size: 28px;
+    }
+    
+    .grid-item:nth-child(2) {
+        grid-column: 2 / 4;
+    }
+
+    .grid-item:nth-child(2) ul li a{
+        font-size: 28px;
+    }
+
+    .grid-item:nth-child(3) {
+        display: none;
+    }
+
+    #popup {
+        width: 80px;
+        height: 80px;
+    }
+
+    section.main .main-info h1{
+        font-size: 70px;
+    }
+
+    section.main .main-info p {
+        font-size: 30px;
+    }
+
+    section.main .main-info button:not(.popup) {
+        width: 50%;
+        height: 60px;
+    }
+
+    section.about p{
+        font-size: 20px;
+    }
+
+    .about .about-tekst ul{
+        font-size: 20px;
+    }
+
+    section.about .about-tekst button {
+        width: 60%;
+        height: 80px;
+    }
+
+    /* BLOG.HTML */
+
+    section.blog .blog-wrapper .blog-naslov h1 {
+        font-size: 60px;
+    }
+    
+    .blog-tekst {
+        font-size: 24px;
+    }
+
+    .blog-text ul {
+        padding: 0px 50px;
+        text-align: justify;
+    }
+
+    section.contact .forma input {
+        height: 80px;
+        width: 90%;
+    }
+    
+    section.contact .forma .forma-submit button {
+        width: 60%;
+        height: 80px;
+    }
+
+    footer .footer-povratak {
+        font-size: 30px;
+    }
+
+    footer {
+        font-size: 26px;
+    }
+
+    .skills {
+        min-height: 70vh;
+    }
+
+    /* GALLERY.HTML */
+    .gallery-column {
+        column-count: 2;
+    }
+
+    section.gallery-flex video {
+        width: 100%;
+    }
+
+    /* GPPROJEKAT.HTML */
+    section.glavniprojekat .glavna-slikaprojekat {
+        width: 100%;
+        margin-bottom: 100px;
+    }
+
+    section.opis p {
+        font-size: 24px;
+    }
+
+    section.maturski {
+        font-size: 24px;
+        height: 70vh;
+    }
+
+    section.maturski button {
+        width: 80%;
+    }
+
+    section.maturski h1 {
+        font-size: 60px;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1600px) {
+    /* INDEX.HTML */
+    .phone-menu {
+        display: none;
+    }
+
+    .ham-btn {
+        display: none;
+    }
+
+    .grid-item:nth-child(1) h1 {
+        font-size: 28px;
+    }
+
+    .grid-item:nth-child(2) ul li a{
+        font-size: 22px;
+    }
+
     .gallery-column {
         column-count: 3;
     }
 
+    section.about .blog-naslov h1{
+        color: red;
+    }
+}
+
+@media (min-width: 1601px) {
     .blog-text ul {
         padding: 0px 100px;
         text-align: justify;
+    }
+
+    .phone-menu {
+        display: none;
+    }
+
+    .ham-btn {
+        display: none;
+    }
+
+    .grid-item:nth-child(1) {
+        font-size: 26px;
+    }
+
+    .grid-item:nth-child(3) input {
+        font-size: 20px;
+    }
+
+    .grid-item:nth-child(2) ul li a{
+        font-size: 28px;
+    }
+
+    .grid-item:nth-child(3) input {
+        height: 50px;
+    }
+
+    section.main .main-info h1{
+        font-size: 50px;
+    }
+
+    section.main .main-info p{
+        font-size: 30px;
+    }
+
+    section.main .main-info button:not(.popup) {
+        width: 30%;
+        height: 60px;
+        font-size: 20px;
+    }
+
+    section.main .main-info .popup {
+        width: 80px;
+        height: 80px;
+        font-size: 25px;
+    }
+
+    section.main .vertikalni-meni ul li a {
+        font-size: 30px;
+    }
+
+    section.main .vertikalni-meni ul li {
+        padding: 40px 0px;
+    }
+
+    section.main .vertikalni-meni .btn-close {
+        width: 80px;
+        height: 80px;
+        font-size: 26px;
+    }
+
+    section.about .about-tekst {
+        font-size: 28px;
+    }
+
+    .about .about-tekst ul {
+        font-size: 34px;
+    }
+
+    section.about .about-tekst button {
+        width: 60%;
+        height: 80px;
+        font-size: 26px;
+    }
+
+    section.blog .blog-wrapper .blog-naslov h1 {
+        font-size: 80px;
+    }
+
+    section.blog .blog-wrapper .blog-tekst h1 {
+        font-size: 40px;
+    }
+
+    section.contact .forma input {
+        width: 100%;
+        height: 100px;
+        font-size: 22px;
+    }
+
+    section.contact .forma button {
+        width: 50%;
+        height: 80px;
+        font-size: 26px;
+    }
+
+    footer .footer-povratak {
+        font-size: 30px;
+    }
+
+    footer {
+        margin-top: 50px;
+        font-size: 28px;
+    }
+
+    /* OMENI.HTML */
+    section.omeni .grid-text{
+        font-size: 24px;
+    }
+
+    section.omeni .grid-skolovanje p{
+        font-size: 22px;
+    }
+
+    section.skills h1 {
+        font-size: 60px;
+    }
+
+    section.skills p {
+        font-size: 26px;
+    }
+
+    /* GALLERY.HTML */
+    section.gallery-flex video {
+        width: 50%;
+    }
+
+    .galerija2-btn button {
+        width: 25%;
+        height: 80px;
+        font-size: 20px;
+    }
+
+    .gallery-column {
+        column-count: 4;
+    }
+
+    /* GPPROJEKAT.HTML */
+    section.glavniprojekat .glavna-slikaprojekat {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    section.glavniprojekat h1#projekat-naslov {
+        font-size: 60px;
+    }
+
+    section.glavniprojekat .buttons-flex button {
+        width: 400px;
+        height: 80px;
+        font-size: 20px;
+    }
+
+    section.opis p {
+        font-size: 30px;
+    }
+
+    section.maturski {
+        height: 60vh;
+    }
+
+    section.maturski h1 {
+        margin-top: 50px;
+        font-size: 60px;
+    }
+
+    section.maturski p {
+        font-size: 30px;
+    }
+
+    section.maturski button {
+        width: 400px;
+        height: 80px;
+        font-size: 20px;
     }
 }
