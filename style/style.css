@@ -42,7 +42,6 @@ body {
     width: 100%;
     margin: 0px auto;
     background-color: var(--main-bg);
-    overflow-x: hidden;
 }
 
 section {
