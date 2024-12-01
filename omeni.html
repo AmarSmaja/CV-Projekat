@@ -11,6 +11,7 @@
     <title>Smaic Amar - About Me</title>
 </head>
 <body>
+    <script src="scripts/script.js"></script>
     <section class="omeni">
         <header>
             <div class="grid-item">
@@ -28,7 +29,19 @@
             <div class="grid-item">
                 <input type="text" placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i>
             </div>
+
+            <button class="ham-btn" id="ham-btn" onclick="openDiv()"><i class="fa-solid fa-bars"></i></button>
         </header>
+
+        <div class="phone-menu" id="phone-menu">
+            <ul>
+                <li><a href="omeni.html">About Me</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="gprojekat.html">Project</a></li>
+            </ul>
+
+            <button class="phone-menu-close" id="btn-phone-close" onclick="closeDiv()">X</button>
+        </div>
 
         <div class="omeni-grid">
             <div class="omeni-grid-item">
@@ -134,21 +147,10 @@
 
         <p>My journey reflects my dedication to continuous learning, innovation, and combining my interests with my technical skills to create meaningful projects.</p>
     
+        <p>Skills: HTML 5 | CSS 3 | JavaScript | ReactJS | MySQL | NodeJS</p>
+        
         <p>Phone Contact: (060) 33 20 495</p>
         <p>Email: amarsmaic@gmail.com</p>
-    </section>
-
-    <section class="tools">
-        <h1>Skills</h1>
-
-        <div class="tools-line">
-            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="">
-            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="">
-            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="">
-            <img src="https://cdn-icons-png.flaticon.com/512/919/919851.png" alt="">
-            <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" alt="">
-            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png" alt="">
-        </div>
     </section>
 
     <footer>

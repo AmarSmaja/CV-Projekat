@@ -11,6 +11,7 @@
     <title>Smaic Amar - Gallery 2</title>
 </head>
 <body>
+    <script src="scripts/script.js"></script>
     <section class="galerija">
         <header>
             <div class="grid-item">
@@ -28,7 +29,19 @@
             <div class="grid-item">
                 <input type="text" placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i>
             </div>
+
+            <button class="ham-btn" id="ham-btn" onclick="openDiv()"><i class="fa-solid fa-bars"></i></button>
         </header>
+
+        <div class="phone-menu" id="phone-menu">
+            <ul>
+                <li><a href="omeni.html">About Me</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="gprojekat.html">Project</a></li>
+            </ul>
+
+            <button class="phone-menu-close" id="btn-phone-close" onclick="closeDiv()">X</button>
+        </div>
 
         <div class="gallery-column">
             <div class="gallery-item">
