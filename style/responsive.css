@@ -153,6 +153,10 @@
         justify-content: center;
     }
 
+    section.about .about-wrapper .about-slika {
+        display: none;
+    }
+
     .grid-datum {
         justify-content: center;
         align-items: center;
@@ -372,6 +376,10 @@
 
     section.about .blog-naslov h1{
         color: red;
+    }
+
+    section.about .about-wrapper .about-slika img {
+        width: 60%;
     }
 }
 
